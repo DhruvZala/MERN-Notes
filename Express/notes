@@ -1,0 +1,41 @@
+(1). Node vs Express : Node is main thing
+                     : With help of Express we can write servers code and how server react that also can be written with help of Express
+
+(2). What is express : Package , Routing
+
+(3). Why express? : http is difficult to use , express makes this easier
+
+(4). Routing : Process of making routes
+
+(5). Middleware : It is a function which runs before every route , It means that badha route pela middleware run thay. 
+                  Aama je code lakhyo hoy ae route pela execute thay.
+
+(6). Request & Response : In request it include all data which is coming from user side as request
+                        : In response it include all data which is coming from server side as response of
+
+(7). Route Parameters : They help in creating dynamic routes
+                      : They are accessable via req.params
+                      : Useful for fetchign data based on user input
+
+(8). Template Engine : It is tool that allows you to generate a dynamic HTML on the server side before sending it to the client.
+                     : It makes webpage more interactive and manageable.
+                     : EJS => Brother of HTML (Just Like JSX)
+                     : Main difference is dynamic value aama add thai sake html ma na thai sake.
+
+
+(9). EJS : Step to setup ejs 
+1. npm i ejs
+2. configure ejs => app.set("view engine", "ejs")
+3. Make folder of views
+4. Make file of ejs inside that folder
+5. Do render instead of send.
+
+(10). Static File : Images , Stylesheets , frontend JS
+
+* Static Files Setup :
+1. Create a public folder
+2. Three folders inside it : Images , Stylesheets , Javascripts
+3. Configure the express static
+4. Understand the path
+
+(11). Error Handling : 
