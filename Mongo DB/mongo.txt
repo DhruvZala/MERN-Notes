@@ -1,0 +1,115 @@
+Mongo DB : Uses NoSql  
+Don't store data in rows and column like SQL
+Data stored in similar to JSON format
+{
+    name: 'Dhruv',
+    age: 21,
+    gpa: 7.35,
+}
+"To create new database use (Use DB_Name)"
+"To use existed database (Use DB_Name)"
+To make collection inside any dbs db.createCollection("collection Name")
+To drop any dbs db.dropDatabase()
+
+*Insert Data
+db.posts.insertOne() => For one object
+db.posts.insertMany() => For many object
+
+*Find Data
+"db.posts.find({})" => Find all stored data
+
+*Data Types in mongo Db :
+String , Numbers , Booleans , Null , Arrays , Object etc.
+
+db.students.find().sort({name: 1/-1})
+Here 1 for alphabatical order and -1 for reverse alphabetical order
+
+=> For any ascending order sorting Use 1 & 
+   For any decending order sorting use -1.
+   db.students.find().sort({CGPA: 1})
+
+=> To get limited data use
+   db.students.find().limit(1)
+   It will return first users data.
+
+=> School> db.Students.find().sort({CGPA: -1}).limit(3)
+Output :- 
+[
+  {
+    _id: ObjectId('67efa5a8473832676b30a901'),
+    Name: 'Any Name',
+    Age: 30,
+    CGPA: 9,
+    Address: { Area: 'Naroda', Socity: 'Samarpan', No: 201 }
+  },
+  {
+    _id: ObjectId('67ef9d76473832676b30a8f8'),
+    name: 'Dhruv Zala',
+    CGPA: 8.35,
+    Age: 21
+  },
+  {
+    _id: ObjectId('67ef9e48473832676b30a8fa'),
+    name: 'Neel Patel',
+    CGPA: 8.35,
+    age: 23
+  }
+]
+
+School> db.Students.find().sort({CGPA: 1}).limit(1)
+Output :-
+[
+  {
+    _id: ObjectId('67efa0a9473832676b30a8fe'),
+    name: 'Ayush Patel',
+    Age: 23,
+    CGPA: 5.21
+  }
+]
+
+db.students.find({query})
+=> School> db.Students.find({name: 'Ayush Patel'})
+[
+  {
+    _id: ObjectId('67efa0a9473832676b30a8fe'),
+    name: 'Ayush Patel',
+    Age: 23,
+    CGPA: 5.21
+  }
+]
+
+=> To update value
+School> db.Students.updateOne({name: 'Ayush Patel'}, {$set: {name: 'Patel Ayush'}})  
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+ 
+*To update more values the "updateMany()" is used
+db.Students.updateMany({}, {$inc: {CGPA: 10}})
+=> It will increase the CGPA by 10
+School> db.Students.updateMany({}, {$inc: {CGPA: 10}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 6,
+  modifiedCount: 6,
+  upsertedCount: 0
+}
+
+=> It will decrease the CGPA by 10
+School> db.Students.updateMany({}, {$inc: {CGPA: -10}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 6,
+  modifiedCount: 6,
+  upsertedCount: 0
+}
+
+*We can delete documents by using the methods deleteOne() or deleteMany().
+School> db.Students.deleteOne({name: 'Patel Ayush'})
+{ acknowledged: true, deletedCount: 1 }
