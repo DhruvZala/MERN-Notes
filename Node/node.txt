@@ -1,0 +1,30 @@
+Node.js is an open source server environment.
+Node.js allows you to run JavaScript on the server.
+
+Module In NodeJs
+Same as js libraries
+Set of functios
+
+C:\Users\Your Name>node demo_module.js
+
+Node.js has a built-in module called HTTP, which allows Node.js 
+to transfer data over the Hyper Text Transfer Protocol (HTTP).
+
+The HTTP module can create an HTTP server that 
+listens to server ports and gives a response back to the client.
+
+var http = require('http');
+
+*create a server object:
+    http.createServer(function (req, res) {
+        res.write('Hello World!'); //write a response to the client
+        res.end(); //end the response
+    }).listen(8080); //the server object listens on port 8080
+
+If the response from the HTTP server is supposed to be displayed as HTML,
+ you should include an HTTP header with the correct content type.
+
+
+
+
+

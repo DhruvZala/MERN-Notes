@@ -1,0 +1,111 @@
+MongoDB Aggregation Pipelines
+
+Allow you to group , sort , perform calculations , analyze data and much more.
+
+*db.posts.aggregate([
+// Stage 1: Only find documents that have more than 1 like
+  {
+    $match: { likes: { $gt: 1 } }
+  },
+// Stage 2: Group documents by category and sum each categories likes
+  {
+    $group: { _id: "$category", totalLikes: { $sum: "$likes" } }
+  }
+])
+
+
+1. Aggregation $group (Group documents and perform aggregation operations)
+ { 
+    $group: {
+      _id: "$category", 
+    totalSales: { $sum: "$amount" }
+  } 
+ }
+
+2. Aggregation $limit (Limit the number of documents)
+    db.movies.aggregate([ { $limit: 1 } ])
+
+3. Aggregation $project (Include/Exclude fields or create new ones)
+    db.restaurants.aggregate([
+  {
+    $project: {
+      "name": 1,
+      "cuisine": 1,
+      "address": 1
+    }
+  },
+  {
+    $limit: 5
+  }
+])
+ 
+4. Aggregation $sort (Sort documents)
+    { $sort: { totalSales: -1 } } 
+
+5. Aggregation $match (It will filter documents that match the query provided)
+    db.listingsAndReviews.aggregate([ 
+        { $match : { property_type : "House" } },
+        { $limit: 2 },
+        { $project: {
+        "name": 1,
+        "bedrooms": 1,
+        "price": 1
+        }}
+    ])
+
+6. Aggregation $addFields (Add new fields or modify existing ones)
+db.restaurants.aggregate([
+  {
+    $addFields: {
+      avgGrade: { $avg: "$grades.score" }
+    }
+  },
+  {
+    $project: {
+      "name": 1,
+      "avgGrade": 1
+    }
+  },
+  {
+    $limit: 5
+  }
+])
+
+7. Aggregation $count (counts the total amount of documents passed)
+db.restaurants.aggregate([
+  {
+    $match: { "cuisine": "Chinese" }
+  },
+  {
+    $count: "totalChinese"
+  }
+])
+
+8. Aggregation $lookup (Join with another collection)
+{
+  $lookup: {
+    from: "orders",
+    localField: "customerId",
+    foreignField: "customerId",
+    as: "orderDetails"
+  }
+}
+
+9. Aggregation $out 
+db.listingsAndReviews.aggregate([
+  {
+    $group: {
+      _id: "$property_type",
+      properties: {
+        $push: {
+          name: "$name",
+          accommodates: "$accommodates",
+          price: "$price",
+        },
+      },
+    },
+  },
+  { $out: "properties_by_type" },
+])
+
+

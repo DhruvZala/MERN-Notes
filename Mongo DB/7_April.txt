@@ -1,0 +1,55 @@
+MongoDB Update Operators
+
+1. $currentDate: Sets the field value to the current date
+   db.users.updateOne(
+        { _id: 1 },
+        { $currentDate: { lastModified: true } }
+    );
+
+2.$inc: Increments the field value
+ db.users.updateOne(
+    { _id: 1 },
+    { $inc: { loginCount: 1 } }
+ );
+
+3. $rename: Renames the field
+   db.users.updateOne(
+        { _id: 1 },
+        { $rename: { "Dhruv Zala": "Zala Dhruv" } }
+    ); 
+
+4. $set: Sets the value of a field
+    db.users.updateOne(
+        { _id: 1 },
+        { $set: { name: "John Doe" } }
+    );
+
+5. $unset: Removes the field from the document
+    db.users.updateOne(
+        { _id: 1 },
+        { $unset: { age: "" } }
+    );
+
+6. $addToSet: Adds distinct elements to an array
+    db.users.updateOne(
+        { _id: 1 },
+        { $addToSet: { hobbies: "Coding" } }
+    );
+
+7.$pop: Removes the first or last element of an array
+    db.users.updateOne(
+        { _id: 1 },
+        { $pop: { hobbies: 1 } } 
+    );
+
+8. $pull: Removes all elements from an array that match the query
+    db.users.updateOne(
+        { _id: 1 },
+        { $pull: { hobbies: "Reading" } }
+    );
+
+9. $push: Adds an element to an array   
+    db.users.updateOne(
+        { _id: 1 },
+        { $push: { hobbies: "Reading" } }
+    );

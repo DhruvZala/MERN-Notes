@@ -1,0 +1,28 @@
+* MongoDB Schema Validation
+: Schema validation rules can be created in order to ensure that all documents in a collection share a similar structure.
+
+db.createCollection("posts" , {
+    validator: {
+        $jsonSchema:{
+            bsonType : "Object",
+            required : [ "title", "body" ],
+            properties : {
+                title : {
+                    bsonType : "string",
+                    description : "Title of post - required."
+                },
+                body , category , etc.
+            }
+        }
+    }
+})
+
+* MongoDB Data API
+  Pre configured set of HTTPS endpoints that can be used to read and write data yo MongoDB atlas
+  With MongoDB data API  you can create, read, update, delete, or aggregate documents in a MongoDB Atlas database.
+
+1. Cluster collection
+2. Access Level
+3. Data API Key
+4. Sending a Data API Request
+
