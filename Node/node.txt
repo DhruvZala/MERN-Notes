@@ -23,8 +23,30 @@ var http = require('http');
 
 If the response from the HTTP server is supposed to be displayed as HTML,
  you should include an HTTP header with the correct content type.
+ 
+=> Use require for import any module
+   var dt = require("./myfirstmodule");
 
+=> You can use JS object to export more then one module
+    function add(a, b) {
+        return a + b;
+    }
+    function sub(a, b) {
+        return a - b;
+    }
+    module.exports = {
+        addFn: add,
+        subFn: sub,
+    }
+=> To use this exported functions
 
+const math = require("./math");
 
+console.log("math value is", math.addFn / subFn (value));
+
+=> Or you can also use below method
+
+const { add, sub } = require("./math")
+console.log("math value is", sub/add(value));
 
 

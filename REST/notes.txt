@@ -1,0 +1,18 @@
+REST API => Representational State Transfer Application Programming Interface
+
+ Work on server client architecture
+
+Set of rules and conventions for building and interacting with web services.
+
+In rest API server doesnot store any info about the client session between request.
+
+REST APIs provide a simple and scalable way for applications to interact over the web.
+
+GET /users: Fetches a list of users.
+
+POST /users: Creates a new user.
+
+PUT /users/{id}: Updates an existing user.
+
+DELETE /users/{id}: Deletes a user.
+

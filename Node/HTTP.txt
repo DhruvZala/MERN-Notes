@@ -1,0 +1,5 @@
+GET => To get data from server
+POST => To send data in server
+PUT => To put something on server
+PATCH => To change an existing entry in server
+DELETE => To delete any data in server

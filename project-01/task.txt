@@ -1,0 +1,14 @@
+REST API - JSON
+
+GET / users - List all users
+
+GET / users / 1 - Get the user with ID 1
+GET / users / 2 - Get the user with ID 2
+
+Dynamic path parameters
+GET /api/users/:id
+:id -> Variable | Dynamic
+
+POST / user / id - Edit user with id
+
+DELETE / users/id - Delete the user with id
